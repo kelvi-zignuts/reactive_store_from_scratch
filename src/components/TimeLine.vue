@@ -1,30 +1,44 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import { DateTime } from "luxon";
+import { ref } from "vue";
+import { Post, today, thisWeek, thisMonth } from "../posts";
 
-const periods = ["Today", "This Week", "This Month"];
+const periods = ["Today", "This Week", "This Month"] as const;
 
-let selectedPeriod = ref("Today");
+type Period = typeof periods[number];
 
-function selectPeriod(period: string) {
-  console.log(period);
-  selectedPeriod.value = period;
+const selectedPeriod = ref<Period>("Today");
+
+function selectPeriod(period: Period) {
+    //   console.log(period);
+    selectedPeriod.value = period;
 }
+
+const posts = [today, thisWeek, thisMonth]
+    .map(post => {
+    return {
+        ...post,
+        created: DateTime.fromISO(post.created)
+    }
+})
 </script>
 
 <template>
-  <nav class="is-primary panel">
-    {{ selectedPeriod }}
-    <span class="panel-tabs">
-      <!-- <a>Today</a>
+    <nav class="is-primary panel">
+        <!-- {{ selectedPeriod }} -->
+        <span class="panel-tabs">
+            <!-- <a>Today</a>
             <a>This Week</a>
             <a>This Month</a> -->
-      <a
-        v-for="period in periods"
-        :key="period"
-        @click="selectPeriod(period)"
-      >
-        {{ period }}
-      </a>
-    </span>
-  </nav>
+            <a v-for="period in periods" :key="period" :class="{ 'is-active': period === selectedPeriod }"
+                @click="selectPeriod(period)">
+                {{ period }}
+            </a>
+        </span>
+
+        <a v-for="post of posts" :key="post.id" class="panel-block">
+            <a>{{ post.title }}</a>
+            <div>{{ post.created.toFormat("d MMM") }}</div>
+        </a>
+    </nav>
 </template>
