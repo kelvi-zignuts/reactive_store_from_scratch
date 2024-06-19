@@ -5,8 +5,6 @@
 import TimeLineItem from "./TimeLineItem.vue";
 import { usePosts } from "../stores/posts";
 import { periods } from "../constants";
-// import TimelineItem from "./TimeLineItem.vue"
-
 
 const postsStore = usePosts();
 
@@ -58,7 +56,6 @@ const postsStore = usePosts();
 //         })
 // })
 
-// postStore.foo = "bar"
 </script>
 
 <template>

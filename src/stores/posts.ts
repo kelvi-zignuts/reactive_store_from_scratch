@@ -1,3 +1,4 @@
+
 import { defineStore } from "pinia";
 import { Period } from "../constants";
 import { Post, today, thisWeek, thisMonth, TimelinePost } from "../posts";
@@ -10,10 +11,12 @@ interface PostsState {
     selectedPeriod: Period
 }
 
+
 export const usePosts = defineStore("posts", {
     state: (): PostsState => ({
         // foo:"foo"
         ids: [today.id, thisWeek.id, thisMonth.id],
+       
         all: new Map([
             [today.id, today],
             [thisWeek.id, thisWeek],
@@ -29,9 +32,10 @@ export const usePosts = defineStore("posts", {
 
         setSelectedPeriod(period: Period) {
             this.selectedPeriod = period
-        }
-    },
+        },
 
+        
+    },
     getters: {
         filteredPosts: (state): TimelinePost[] => {
             return state.ids
