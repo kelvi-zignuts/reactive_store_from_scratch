@@ -6,7 +6,14 @@ import TimeLineItem from "./TimeLineItem.vue";
 import { usePosts } from "../stores/posts";
 import { periods } from "../constants";
 
+//calling the function usePosts()
 const postsStore = usePosts();
+
+//calling method fetchPosts
+//postsStore.fetchPosts();
+
+await postsStore.fetchPosts();
+
 
 // const periods = ["Today", "This Week", "This Month"] as const;
 

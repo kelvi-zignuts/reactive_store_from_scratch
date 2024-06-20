@@ -7,7 +7,8 @@
     "start": "ts-node src/server/index.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "ts-node src/server/index.ts"
   },
   "dependencies": {
     "@types/luxon": "^3.4.2",
