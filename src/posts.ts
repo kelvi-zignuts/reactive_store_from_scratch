@@ -7,6 +7,8 @@ export interface Post {
     id: string
     title: string
     created: string
+    markdown: string
+    html: string
 }
 
 //TimelinePost is another interface that extends the Post interface.
@@ -21,21 +23,27 @@ export interface TimelinePost extends Omit<Post, 'created'> {
 export const today: Post = {
     id: "1",
     title: "Today",
-    created: DateTime.now().toISO()
     //DateTime.now() : create a new DateTime object representing the current date and time
     //toISO() : converts the DateTime object represting the current date and time
+    created: DateTime.now().toISO(),
+    markdown :'',
+    html: ''
 }
 
 export const thisWeek: Post = {
     id: "2",
     title: "This Week",
-    created: DateTime.now().minus({ days: 5 }).toISO()
     //substracts 5 days from the current date and time
+    created: DateTime.now().minus({ days: 5 }).toISO(),
+    markdown :'',
+    html: ''
 }
 
 export const thisMonth: Post = {
     id: "3",
     title: "This Month",
-    created: DateTime.now().minus({ weeks: 3 }).toISO()
     //substracts 3 weeks from the current date and time
+    created: DateTime.now().minus({ weeks: 3 }).toISO(),
+    markdown :'',
+    html: ''
 }

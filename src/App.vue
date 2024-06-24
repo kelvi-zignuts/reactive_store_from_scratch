@@ -1,34 +1,57 @@
 <script setup lang="ts">
-import TimeLine from './components/TimeLine.vue'
+// import TimeLine from './components/TimeLine.vue'
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
   <div class="section">
     <div class="container">
-      <Suspense>
-        <template #default>
+      <Navbar/>
+      <RouterView />
+      <!-- <Suspense> -->
+      <!-- <template #default>
           <TimeLine />
         </template>
 
-        <template #fallback>
-          <!-- Loading... -->
-          <!-- <progress class="progress is-primary is-small"/> -->
-          <div class="loading-dots">
+<template #fallback> -->
+      <!-- Loading... -->
+      <!-- <progress class="progress is-primary is-small"/> -->
+      <!-- <div class="loading-dots">
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
           </div>
-        </template>
+        </template> -->
 
-      </Suspense>
+      <!-- </Suspense> -->
     </div>
   </div>
 </template>
 
-<style>
+<style v-highlight="'javascript'">
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css";
+@import "../node_modules/highlight.js/styles/atom-one-dark.css";
+/* @import '~highlight.js/styles/atom-one-dark.css'; */
 
-.loading-dots {
+ul {
+  list-style: revert !important;
+  list-style-position: inside !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: revert !important;
+  margin: 10px 0 !important;
+}
+
+pre {
+  margin: 10px 0 !important;
+}
+
+p {
+  margin: 10px 0 !important;
+}
+
+/* .loading-dots {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,5 +79,5 @@ import TimeLine from './components/TimeLine.vue'
   100% {
     transform: translateY(0);
   }
-}
+} */
 </style>

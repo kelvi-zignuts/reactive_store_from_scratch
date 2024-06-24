@@ -74,6 +74,18 @@ export const usePosts = defineStore("posts", {
             //update the ids and all property of the store's state with the new ids array and all map.
             this.ids = ids
             this.all = all
+        },
+        createPost(post:TimelinePost){
+            // console.log(post)
+            //JSON.stringify() : which converts the object to a JSON string.
+            const body = JSON.stringify({...post, created: post.created.toISO()})
+            return window.fetch("http://localhost:8000/posts",{
+                method : "POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body
+            })
         }
     },
     getters: {
