@@ -22,10 +22,25 @@
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }],
+  /*for server/index.ts*/
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
       "esModuleInterop": true,
     }
   }
+
+  /*for src/validation.ts*/
+  // "ts-node" : {
+  //   "compilerOptions": {
+  //     "target": "ESNext",
+  //     "module": "ESNext",
+  //     "moduleResolution": "Node",
+  //     "esModuleInterop": true,
+  //     "skipLibCheck": true,
+  //     "strict": true
+  //   },
+  //   "include": ["src/**/*.ts"],
+  //   "exclude": ["node_modules"]
+  // }  
 }
